@@ -1,0 +1,26 @@
+{
+  "name": "tawamure",
+  "version": "0.0.0",
+  "description": "",
+  "main": "utils.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "babel-tape-runner ./tests/**/*.test.js | tap-difflet"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axross/tawamure.git"
+  },
+  "author": "axross <kou@axross.org> (http://axross.me/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/axross/tawamure/issues"
+  },
+  "homepage": "https://github.com/axross/tawamure#readme",
+  "devDependencies": {
+    "babel-core": "^6.0.14",
+    "babel-tape-runner": "^1.2.0"
+  }
+}
