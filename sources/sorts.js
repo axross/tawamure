@@ -1,6 +1,6 @@
 import { swap } from '../utils';
 
-export const bubbleSortIterable = function*(arr) {
+export const bubbleSortGenerator = function*(arr) {
   let isFinished = false;
 
   while (!isFinished) {
@@ -18,10 +18,14 @@ export const bubbleSortIterable = function*(arr) {
   }
 };
 
-export const bubbleSort = arr => {
-  let result;
+const createAtomicFunction = generator => {
+  return arr => {
+    let result;
 
-  for (result of bubbleSortIterable(arr.slice())) {};
+    for (result of generator(arr.slice())) {};
 
-  return result || arr;
+    return result || arr;
+  }
 };
+
+export const bubbleSort = createAtomicFunction(bubbleSortGenerator);
