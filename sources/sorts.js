@@ -18,6 +18,32 @@ export const bubbleSortGenerator = function*(arr) {
   }
 };
 
+export const selectionSortGenerator = function*(arr) {
+  let isFinished = false;
+  let unfinishedFirstIndex = 0;
+
+  while (!isFinished) {
+    isFinished = true;
+
+    let smallestIndex = unfinishedFirstIndex;
+
+    for (let i = unfinishedFirstIndex + 1; i < arr.length; ++i) {
+      if (arr[i] <= arr[smallestIndex]) {
+        smallestIndex = i;
+      }
+    }
+
+    if (unfinishedFirstIndex !== smallestIndex) {
+      swap(arr, unfinishedFirstIndex, smallestIndex);
+
+      ++unfinishedFirstIndex;
+      isFinished = false;
+
+      yield arr;
+    }
+  }
+};
+
 const createAtomicFunction = generator => {
   return arr => {
     let result;
@@ -29,3 +55,4 @@ const createAtomicFunction = generator => {
 };
 
 export const bubbleSort = createAtomicFunction(bubbleSortGenerator);
+export const selectionSort = createAtomicFunction(selectionSortGenerator);
